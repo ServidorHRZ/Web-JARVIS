@@ -180,7 +180,7 @@ function abrirModalPago(tipoPlan) {
             <span>Nu</span>
         </a>
         <a href="https://wa.me/573167699072?text=Quiero%20adquirir%20el%20plan%20${tipoPlan}%20mediante%20Western%20Union" target="_blank" class="metodo-pago">
-            <img src="IMG/western.png" alt="Western Union">
+            <img src="IMG/western-union.png" alt="Western Union">
             <span>Western Union</span>
         </a>
     `;
