@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalSpots = 100;
     
     // AQUÍ DEFINES EL NÚMERO DE CUPOS DISPONIBLES
-    let cuposDisponibles = 20; // Cambia este número para actualizar la barra
+    let cuposDisponibles = 0; // Cambia este número para actualizar la barra
     
     function updateProgress() {
         // Asegurarse de que los cupos estén entre 0 y 100
