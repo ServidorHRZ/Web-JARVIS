@@ -160,24 +160,28 @@ function abrirModalPago(tipoPlan) {
     // Métodos de pago con enlaces a WhatsApp
     const metodosPago = `
         <a href="https://wa.me/573167699072?text=Quiero%20adquirir%20el%20plan%20${tipoPlan}%20mediante%20PayPal" target="_blank" class="metodo-pago">
-            <img src="/IMG/paypal.png" alt="PayPal">
+            <img src="IMG/paypal.png" alt="PayPal">
             <span>PayPal</span>
         </a>
         <a href="https://wa.me/573167699072?text=Quiero%20adquirir%20el%20plan%20${tipoPlan}%20mediante%20Daviplata" target="_blank" class="metodo-pago">
-            <img src="/IMG/daviplata.png" alt="Daviplata">
+            <img src="IMG/daviplata.png" alt="Daviplata">
             <span>Daviplata</span>
         </a>
         <a href="https://wa.me/573167699072?text=Quiero%20adquirir%20el%20plan%20${tipoPlan}%20mediante%20Bancolombia%20a%20la%20Mano" target="_blank" class="metodo-pago">
-            <img src="/IMG/bancolombia.png" alt="Bancolombia a la Mano">
+            <img src="IMG/bancolombia.png" alt="Bancolombia a la Mano">
             <span>Bancolombia a la Mano</span>
         </a>
         <a href="https://wa.me/573167699072?text=Quiero%20adquirir%20el%20plan%20${tipoPlan}%20mediante%20Nequi" target="_blank" class="metodo-pago">
-            <img src="/IMG/nequi.png" alt="Nequi">
+            <img src="IMG/nequi.png" alt="Nequi">
             <span>Nequi</span>
         </a>
         <a href="https://wa.me/573167699072?text=Quiero%20adquirir%20el%20plan%20${tipoPlan}%20mediante%20Nu" target="_blank" class="metodo-pago">
-            <img src="/IMG/nu.png" alt="Nu">
+            <img src="IMG/nu.png" alt="Nu">
             <span>Nu</span>
+        </a>
+        <a href="https://wa.me/573167699072?text=Quiero%20adquirir%20el%20plan%20${tipoPlan}%20mediante%20Western%20Union" target="_blank" class="metodo-pago">
+            <img src="IMG/western.png" alt="Western Union">
+            <span>Western Union</span>
         </a>
     `;
     
