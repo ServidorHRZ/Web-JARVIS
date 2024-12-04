@@ -88,23 +88,98 @@
         </section>
 
         <section id="beta">
-            <h2 class="section-title">Acceso Beta Exclusivo</h2>
-            <div class="beta-info">
-                <p>Sé uno de los primeros en probar Jarvis IA</p>
-                <div class="beta-limit">
-                    <p class="highlight">¡Solo 100 cupos disponibles!</p>
-                    <div class="progress-container">
-                        <div class="progress-bar progress-high" id="beta-progress"></div>
-                        <span class="spots-left" id="spots-counter">100 cupos restantes</span>
+            <h2 class="section-title">VERSIONES BETA</h2>
+            <p class="section-description">Descarga la versión que mejor se adapte a tus necesidades</p>
+            <p class="beta-dates">Disponible a partir del 25 de diciembre de 2024</p>
+            
+            <div class="beta-versions">
+                <!-- Versión Masculina -->
+                <div class="beta-version-card">
+                    <div class="version-icon">
+                        <i class="fas fa-male"></i>
+                    </div>
+                    <div class="version-info">
+                        <h3>Jarvis</h3>
+                        <div class="subtitle">Personalidad Masculina</div>
+                    </div>
+                    <div class="download-options">
+                        <a href="#" class="download-button">
+                            <i class="fab fa-windows"></i>
+                            <span>Windows</span>
+                        </a>
+                        <a href="#" class="download-button">
+                            <i class="fab fa-apple"></i>
+                            <span>MacOS</span>
+                        </a>
                     </div>
                 </div>
-                <ul>
-                    <li>Acceso durante 5 días antes del lanzamiento oficial</li>
-                    <li>Prueba todas las funciones exclusivas</li>
-                    <li>Ayuda a mejorar Jarvis con tus comentarios</li>
-                </ul>
-                <p class="beta-dates">Beta disponible del 26 al 30 de noviembre de 2024</p>
-                <button class="cta-button">Solicita tu acceso beta</button>
+
+                <!-- Versión Femenina -->
+                <div class="beta-version-card">
+                    <div class="version-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="version-info">
+                        <h3>JARVIS</h3>
+                        <div class="subtitle">Personalidad Femenina</div>
+                    </div>
+                    <div class="download-options">
+                        <a href="#" class="download-button">
+                            <i class="fab fa-windows"></i>
+                            <span>Windows</span>
+                        </a>
+                        <a href="#" class="download-button">
+                            <i class="fab fa-apple"></i>
+                            <span>MacOS</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Versión Lite -->
+                <div class="beta-version-card">
+                    <div class="version-icon">
+                        <i class="fas fa-feather"></i>
+                    </div>
+                    <div class="version-info">
+                        <h3>JARVIS Lite</h3>
+                        <div class="subtitle">Versión Básica</div>
+                    </div>
+                    <div class="download-options">
+                        <a href="#" class="download-button">
+                            <i class="fab fa-windows"></i>
+                            <span>Windows</span>
+                        </a>
+                        <a href="#" class="download-button">
+                            <i class="fab fa-apple"></i>
+                            <span>MacOS</span>
+                        </a>
+                        <a href="#" class="download-button">
+                            <i class="fab fa-linux"></i>
+                            <span>Linux</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Versión Móvil -->
+                <div class="beta-version-card mobile">
+                    <div class="version-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="version-info">
+                        <h3>JARVIS Mobile</h3>
+                        <div class="subtitle">App Móvil</div>
+                    </div>
+                    <div class="mobile-download-options">
+                        <a href="#" class="mobile-download-button">
+                            <i class="fab fa-google-play"></i>
+                            <span>Android</span>
+                        </a>
+                        <a href="#" class="mobile-download-button">
+                            <i class="fab fa-app-store-ios"></i>
+                            <span>iOS</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -113,7 +188,7 @@
             <h2 class="section-title">Próximo Lanzamiento</h2>
             <div class="launch-info">
                 <div class="launch-badge">
-                    <p class="launch-date">1 de Diciembre, 2024</p>
+                    <p class="launch-date">7 de Abril, 2024</p>
                 </div>
                 <p class="launch-tagline">¡Prepárate para la revolución de la IA personal!</p>
                 <div id="countdown" class="countdown-modern">
@@ -203,9 +278,40 @@
             </div>
         </section>
 
+        
         <section id="planes">
             <h2 class="section-title">Planes Disponibles</h2>
             <div class="plan-container">
+                <!-- Plan Gratuito (Jarvis Lite) -->
+                <div class="plan lite">
+                    <div class="plan-header">
+                        <h3>Jarvis Lite</h3>
+                        <p class="price">Gratis</p>
+                        <p class="billing-period">Para siempre</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Chat básico con IA</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Reconocimiento de voz básico</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hasta 7000 consultas/mes</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Soporte comunitario</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="abrirModalPago('lite')" class="plan-button lite">Descargar Gratis</button>
+                </div>
+
                 <div class="plan">
                     <div class="plan-header">
                         <h3>Plan Mensual</h3>
@@ -313,7 +419,7 @@
     <!-- Agregar antes del cierre del body -->
     <div id="modalPago" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" onclick="cerrarModalPago()">&times;</span>
             <h2>Selecciona tu método de pago</h2>
             <p id="plan-seleccionado"></p>
             <div class="metodos-pago">
