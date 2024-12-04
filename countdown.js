@@ -1,5 +1,5 @@
-// Fecha de lanzamiento: 1 de diciembre de 2024
-const countDownDate = new Date("Dec 1, 2024 00:00:00").getTime();
+// Fecha de lanzamiento: 7 de abril de 2024
+const countDownDate = new Date("Apr 7, 2025 00:00:00").getTime();
 
 // Actualizar el contador cada segundo
 const x = setInterval(function() {
@@ -143,15 +143,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Funciones para el modal de pagos
 function abrirModalPago(tipoPlan) {
-    // Cerrar el modal de selección de plan
-    document.getElementById('modalPlanSelect').style.display = 'none';
-    
     const modal = document.getElementById('modalPago');
     const planText = document.getElementById('plan-seleccionado');
     const metodosContainer = document.querySelector('.metodos-pago');
     
-    // Mostrar el plan seleccionado
-    const precio = tipoPlan === 'mensual' ? '$7 USD' : '$70 USD';
+    // Si es el plan gratuito, redirigir directamente a la descarga
+    if (tipoPlan === 'lite') {
+        window.location.href = '#beta'; // Redirige a la sección de descargas
+        return;
+    }
+    
+    // Para los planes pagos, mostrar el modal con los métodos de pago
+    const precio = tipoPlan === 'mensual' ? '$5 USD' : '$45 USD';
     planText.textContent = `Plan seleccionado: ${tipoPlan.charAt(0).toUpperCase() + tipoPlan.slice(1)} - ${precio}`;
     
     // Limpiar los métodos de pago existentes
@@ -216,4 +219,71 @@ window.addEventListener('click', function(event) {
         document.body.style.overflow = 'auto';
     }
 });
+
+// Funciones para manejar los modales
+function cerrarModalPago() {
+    document.getElementById('modalPago').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function cerrarModalPlan() {
+    document.getElementById('modalPlanSelect').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Agregar event listeners cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listeners para los botones de cerrar (X)
+    const closeButtons = document.querySelectorAll('.close');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    // Cerrar modales al hacer clic fuera de ellos
+    window.addEventListener('click', function(event) {
+        const modalPago = document.getElementById('modalPago');
+        const modalPlan = document.getElementById('modalPlanSelect');
+        const modalVideo = document.getElementById('modalVideo');
+
+        if (event.target === modalPago) {
+            modalPago.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        if (event.target === modalPlan) {
+            modalPlan.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        if (event.target === modalVideo) {
+            modalVideo.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+
+// Mejoras para el manejo de diferentes tamaños de pantalla
+function adjustLayoutForScreenSize() {
+  const isMobile = window.innerWidth <= 768;
+  const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+  
+  // Ajustar elementos según el dispositivo
+  document.querySelectorAll('.feature').forEach(feature => {
+    feature.style.minHeight = isMobile ? 'auto' : isTablet ? '300px' : '350px';
+  });
+
+  // Ajustar tamaño de fuente para el contador
+  const countdownValues = document.querySelectorAll('.countdown-value');
+  countdownValues.forEach(value => {
+    value.style.fontSize = isMobile ? '1.5rem' : isTablet ? '2rem' : '2.5rem';
+  });
+}
+
+// Ejecutar al cargar y al cambiar el tamaño de la ventana
+window.addEventListener('load', adjustLayoutForScreenSize);
+window.addEventListener('resize', adjustLayoutForScreenSize);
 
