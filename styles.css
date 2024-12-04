@@ -45,8 +45,10 @@ nav {
 }
 
 nav ul {
-    list-style-type: none;
     display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
@@ -1040,6 +1042,7 @@ footer {
     gap: 5px;
     cursor: pointer;
     padding: 10px;
+    z-index: 1000;
 }
 
 .menu-toggle span {
@@ -1088,48 +1091,61 @@ footer {
     .menu-toggle {
         display: flex;
     }
-    
+
     nav ul {
         display: none;
-        position: absolute;
-        top: var(--header-height);
+        position: fixed;
+        top: 60px; /* Altura del header */
         left: 0;
         width: 100%;
+        height: calc(100vh - 60px);
         background-color: var(--background-color);
         flex-direction: column;
-        padding: 1rem 0;
-        border-top: 1px solid var(--primary-color);
+        align-items: center;
+        padding: 2rem 0;
+        z-index: 999;
     }
-    
+
     nav ul.active {
         display: flex;
     }
-    
+
     nav ul li {
-        margin: 0;
-        padding: 1rem;
-        text-align: center;
+        margin: 1rem 0;
     }
-    
+
+    /* Animación del menú hamburguesa */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero p {
         font-size: 1.2rem;
     }
-    
+
     .feature-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .modal-content {
         width: 95%;
         margin: 10% auto;
         padding: 1.5rem;
     }
-    
+
     .metodos-pago {
         grid-template-columns: 1fr;
     }
@@ -2250,3 +2266,46 @@ footer {
     contain: layout paint;
 }
 
+/* Estilos para el menú móvil */
+nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Mostrar el menú hamburguesa en móvil */
+    }
+
+    nav ul {
+        display: none; /* Ocultar el menú por defecto en móvil */
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--background-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        z-index: 999;
+    }
+
+    nav ul.active {
+        display: flex; /* Mostrar el menú cuando tiene la clase active */
+    }
+
+    /* Animación para las barras del menú hamburguesa */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}

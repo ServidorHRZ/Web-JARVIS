@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('nav ul');
-    const menuItems = document.querySelectorAll('nav ul li a');
     
     // Función para alternar el menú
     function toggleMenu() {
@@ -100,47 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Event listener para el botón de menú
     menuToggle.addEventListener('click', toggleMenu);
-    
-    // Cerrar menú al hacer clic en un enlace
-    menuItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            toggleMenu();
-            
-            // Scroll suave a la sección
-            e.preventDefault();
-            const targetId = item.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Cerrar menú al hacer scroll
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > lastScroll && navMenu.classList.contains('active')) {
-            toggleMenu();
-        }
-        lastScroll = currentScroll;
-    });
-    
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', (e) => {
-        if (navMenu.classList.contains('active') && 
-            !navMenu.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
-            toggleMenu();
-        }
-    });
 });
-
 // Funciones para el modal de pagos
 function abrirModalPago(tipoPlan) {
     const modal = document.getElementById('modalPago');
@@ -219,7 +178,6 @@ window.addEventListener('click', function(event) {
         document.body.style.overflow = 'auto';
     }
 });
-
 // Funciones para manejar los modales
 function cerrarModalPago() {
     document.getElementById('modalPago').style.display = 'none';
@@ -286,4 +244,5 @@ function adjustLayoutForScreenSize() {
 // Ejecutar al cargar y al cambiar el tamaño de la ventana
 window.addEventListener('load', adjustLayoutForScreenSize);
 window.addEventListener('resize', adjustLayoutForScreenSize);
+
 
