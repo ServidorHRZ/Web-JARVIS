@@ -1035,21 +1035,118 @@ footer {
     --container-padding: 2rem;
 }
 
-/* Menú hamburguesa para móviles */
+/* Estilos mejorados para el menú móvil */
 .menu-toggle {
     display: none;
-    flex-direction: column;
-    gap: 5px;
     cursor: pointer;
-    padding: 10px;
-    z-index: 1000;
+    padding: 15px;
+    z-index: 1001;
+    position: relative;
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
 .menu-toggle span {
-    width: 25px;
-    height: 3px;
+    display: block;
+    width: 30px;
+    height: 2px;
+    margin: 6px 0;
     background-color: var(--primary-color);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Añadido para centrar verticalmente */
+        gap: 2rem; /* Aumentado el espacio entre elementos */
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        max-width: 300px; /* Añadido para limitar el ancho */
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        background-color: rgba(0, 255, 255, 0.05);
+    }
+
+    .nav-menu li a:hover {
+        background-color: rgba(0, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+    /* Animación secuencial para los elementos del menú */
+    .nav-menu li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-menu li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-menu li:nth-child(4) { transition-delay: 0.4s; }
+
+    .nav-menu a {
+        display: block;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background: rgba(0, 255, 255, 0.05);
+        border: 1px solid transparent;
+    }
+
+    .nav-menu a:hover {
+        background: rgba(0, 255, 255, 0.1);
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+    }
+
+    /* Animación mejorada del botón hamburguesa */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+        width: 30px;
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px) rotate(180deg);
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+        width: 30px;
+    }
 }
 
 /* Media Queries mejoradas */
@@ -1089,32 +1186,27 @@ footer {
 
 @media (max-width: 768px) {
     .menu-toggle {
-        display: flex;
+        display: block;
     }
 
-    nav ul {
+    .nav-menu {
         display: none;
         position: fixed;
-        top: 60px; /* Altura del header */
+        top: var(--header-height);
         left: 0;
         width: 100%;
-        height: calc(100vh - 60px);
-        background-color: var(--background-color);
+        height: calc(100vh - var(--header-height));
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px;
         flex-direction: column;
         align-items: center;
-        padding: 2rem 0;
-        z-index: 999;
+        gap: 20px;
     }
 
-    nav ul.active {
+    .nav-menu.active {
         display: flex;
     }
 
-    nav ul li {
-        margin: 1rem 0;
-    }
-
-    /* Animación del menú hamburguesa */
     .menu-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -1124,7 +1216,15 @@ footer {
     }
 
     .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
     }
 
     .hero h1 {
@@ -1696,11 +1796,124 @@ footer {
 /* Estilos actualizados para las versiones beta */
 .beta-versions {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2.5rem;
-    max-width: 1400px;
+    max-width: var(--container-max-width);
     margin: 4rem auto;
-    padding: 0 2rem;
+    padding: 0 var(--container-padding);
+}
+
+/* Pantallas grandes y monitores (4K+) */
+@media (min-width: 2560px) {
+    .beta-versions {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+    }
+
+    .beta-version-card {
+        min-height: 450px;
+    }
+}
+
+/* Monitores estándar y laptops grandes */
+@media (max-width: 1920px) and (min-width: 1367px) {
+    .beta-versions {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+
+    .beta-version-card {
+        min-height: 420px;
+    }
+}
+
+/* Laptops y tablets grandes */
+@media (max-width: 1366px) and (min-width: 1025px) {
+    .beta-versions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .beta-version-card {
+        min-height: 400px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .beta-versions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .beta-version-card {
+        min-height: 380px;
+    }
+}
+
+/* Móviles y tablets pequeñas */
+@media (max-width: 768px) {
+    .beta-versions {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+        max-width: 400px;
+        margin: 2rem auto;
+    }
+
+    .beta-version-card {
+        min-height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Ajustes para mejorar la visualización en móvil */
+    .version-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+
+    .version-icon i {
+        font-size: 2rem;
+    }
+
+    .beta-version-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .download-options,
+    .mobile-download-options {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .download-button,
+    .mobile-download-button {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 320px) {
+    .beta-versions {
+        gap: 1rem;
+        padding: 0 0.8rem;
+    }
+
+    .beta-version-card {
+        padding: 1.5rem;
+    }
+
+    .version-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .version-icon i {
+        font-size: 1.8rem;
+    }
 }
 
 .beta-version-card {
@@ -2143,25 +2356,39 @@ footer {
 }
 
 /* Media queries mejorados */
-/* TV y pantallas grandes */
-@media (min-width: 1921px) {
+/* TV y pantallas grandes (4K+) */
+@media (min-width: 2560px) {
     :root {
         font-size: 18px;
     }
-
+    
     .container {
-        max-width: 1800px;
+        max-width: 2000px;
     }
-
-    .hero h1 {
-        font-size: clamp(3rem, 5vw, 6rem);
+    
+    .beta-versions {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
     }
 }
 
-/* Laptops y monitores */
-@media (max-width: 1920px) {
+/* Laptops y monitores estándar */
+@media (max-width: 1366px) {
     .container {
-        max-width: 1440px;
+        max-width: 1140px;
+    }
+    
+    .beta-versions {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
     }
 }
 
@@ -2170,20 +2397,22 @@ footer {
     .container {
         max-width: 900px;
     }
-
+    
+    .beta-versions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .feature-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
+    
     .plan-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
     }
-
-    .plan {
-        width: 100%;
-        max-width: 400px;
+    
+    .creator-info {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
@@ -2192,111 +2421,45 @@ footer {
     .container {
         padding: 0 1rem;
     }
-
-    .hero-content {
-        padding: 2rem 1rem;
+    
+    .beta-versions {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin: 0 auto;
     }
-
+    
     .feature-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
-
-    .creator-info {
-        flex-direction: column;
-        text-align: center;
+    
+    .plan-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
     }
-}
-
-/* Móviles */
-@media (max-width: 480px) {
-    :root {
-        font-size: 14px;
-    }
-
-    .hero h1 {
-        font-size: clamp(2rem, 8vw, 3rem);
-    }
-
-    .plan {
-        padding: 1.5rem;
-    }
-}
-
-/* Orientación landscape en móviles */
-@media (max-height: 480px) and (orientation: landscape) {
-    .hero {
-        min-height: 100vh;
-    }
-
-    .hero-content {
-        padding: 1rem;
-    }
-
-    .modal-content {
-        margin: 1rem;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-}
-
-/* Mejoras de accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* Soporte para dark mode */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #000;
-        --text-color: #fff;
-    }
-}
-
-/* Mejoras de rendimiento */
-.hero-background img,
-.feature-image img,
-.creator-image {
-    content-visibility: auto;
-    contain: layout paint;
-}
-
-/* Estilos para el menú móvil */
-nav ul {
-    display: flex;
-    gap: 2rem;
-}
-
-@media (max-width: 768px) {
+    
     .menu-toggle {
-        display: flex; /* Mostrar el menú hamburguesa en móvil */
+        display: block;
     }
-
-    nav ul {
-        display: none; /* Ocultar el menú por defecto en móvil */
+    
+    .nav-menu {
+        display: none;
         position: fixed;
         top: var(--header-height);
         left: 0;
         width: 100%;
         height: calc(100vh - var(--header-height));
-        background-color: var(--background-color);
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        z-index: 999;
+        gap: 20px;
+    }
+    
+    .nav-menu.active {
+        display: flex;
     }
 
-    nav ul.active {
-        display: flex; /* Mostrar el menú cuando tiene la clase active */
-    }
-
-    /* Animación para las barras del menú hamburguesa */
     .menu-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -2308,4 +2471,446 @@ nav ul {
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
     }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
 }
+
+/* Móviles */
+@media (max-width: 480px) {
+    :root {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 0.8rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .download-options,
+    .mobile-download-options {
+        flex-direction: column;
+    }
+    
+    .download-button,
+    .mobile-download-button {
+        width: 100%;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+        margin: 5% auto;
+    }
+    
+    .metodos-pago {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Ajustes para modo landscape en móviles */
+@media (max-height: 480px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+}
+
+/* Mejoras de rendimiento y accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Ajustes para el menú móvil */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+}
+
+/* Ajustes base para todos los dispositivos */
+:root {
+    --container-max-width: 1400px;
+    --container-padding: clamp(1rem, 5vw, 2rem);
+    --header-height: clamp(60px, 8vh, 80px);
+}
+
+/* Pantallas extra grandes (4K+) */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 2000px;
+        padding: 0 3rem;
+    }
+
+    .beta-versions {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+        padding: 0 3rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+}
+
+/* Pantallas grandes (1920px - 2559px) */
+@media (min-width: 1920px) and (max-width: 2559px) {
+    .container {
+        max-width: 1800px;
+    }
+
+    .beta-versions {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* Laptops y monitores estándar (1366px - 1919px) */
+@media (min-width: 1366px) and (max-width: 1919px) {
+    .container {
+        max-width: 1300px;
+    }
+
+    .beta-versions {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Tablets grandes y laptops pequeñas (1024px - 1365px) */
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .beta-versions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plan-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .beta-versions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .plan-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .creator-info {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Móviles grandes (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .beta-versions {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 450px;
+        margin: 2rem auto;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .plan-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    nav ul {
+        padding: 1rem;
+    }
+}
+
+/* Móviles pequeños (hasta 479px) */
+@media (max-width: 479px) {
+    .container {
+        padding: 0 0.8rem;
+    }
+
+    .beta-versions {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 100%;
+        padding: 0 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .plan-container {
+        grid-template-columns: 1fr;
+        padding: 0 0.5rem;
+    }
+
+    .creator-social {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .metodos-pago {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+}
+
+/* Ajustes específicos para modo landscape en móviles */
+@media (max-height: 480px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+
+    .modal-content {
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .beta-versions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .nav-menu.active {
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+}
+
+/* Mejoras de rendimiento y accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Ajustes para el menú móvil */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+}
+
+/* Estilos para botones deshabilitados */
+.download-button.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    position: relative;
+    background: rgba(255, 0, 0, 0.1);
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.download-button.disabled:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff0000;
+}
+
+.lock-icon {
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.beta-dates {
+    color: #ff0000;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Tooltip personalizado */
+.download-button.disabled:hover::after {
+    content: "Disponible el 25 de diciembre";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.plan-button.disabled,
+.cta-button.disabled {
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    pointer-events: none;
+}
+
+.download-button.disabled,
+.mobile-download-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.lock-icon {
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+

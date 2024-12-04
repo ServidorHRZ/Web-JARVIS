@@ -82,34 +82,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('nav ul');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
     
-    // Función para alternar el menú
     function toggleMenu() {
         menuToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
         
-        // Bloquear/desbloquear el scroll del body
-        if (navMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
+        // Gestionar el scroll del body
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+        
+        // Reiniciar las animaciones de los elementos del menú
+        if (!navMenu.classList.contains('active')) {
+            navLinks.forEach(link => {
+                link.parentElement.style.opacity = '0';
+                link.parentElement.style.transform = 'translateY(20px)';
+            });
         }
     }
     
-    // Event listener para el botón de menú
-    menuToggle.addEventListener('click', toggleMenu);
+    if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+    }
+
+    // Cerrar menú al hacer clic en los enlaces
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMenu();
+        });
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && 
+            !navMenu.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            toggleMenu();
+        }
+    });
 });
 // Funciones para el modal de pagos
 function abrirModalPago(tipoPlan) {
+    const modalPlan = document.getElementById('modalPlanSelect');
     const modal = document.getElementById('modalPago');
     const planText = document.getElementById('plan-seleccionado');
     const metodosContainer = document.querySelector('.metodos-pago');
     
     // Si es el plan gratuito, redirigir directamente a la descarga
     if (tipoPlan === 'lite') {
-        window.location.href = '#beta'; // Redirige a la sección de descargas
+        window.location.href = '#beta';
         return;
+    }
+    
+    // Cerrar el modal de selección de plan si está abierto
+    if (modalPlan) {
+        modalPlan.style.display = 'none';
     }
     
     // Para los planes pagos, mostrar el modal con los métodos de pago
@@ -149,6 +176,7 @@ function abrirModalPago(tipoPlan) {
     
     metodosContainer.innerHTML = metodosPago;
     
+    // Mostrar el modal de pagos
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden'; // Previene el scroll del body
 }
@@ -164,32 +192,13 @@ function cerrarModalPlan() {
     document.body.style.overflow = 'auto';
 }
 
-// Cerrar modales al hacer clic fuera de ellos
-window.addEventListener('click', function(event) {
-    const modalPlan = document.getElementById('modalPlanSelect');
-    const modalPago = document.getElementById('modalPago');
-    
-    if (event.target == modalPlan) {
-        modalPlan.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-    if (event.target == modalPago) {
-        modalPago.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-});
-// Funciones para manejar los modales
 function cerrarModalPago() {
-    document.getElementById('modalPago').style.display = 'none';
+    const modal = document.getElementById('modalPago');
+    modal.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
-function cerrarModalPlan() {
-    document.getElementById('modalPlanSelect').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-// Agregar event listeners cuando el DOM esté cargado
+// Event listeners para cerrar modales
 document.addEventListener('DOMContentLoaded', function() {
     // Event listeners para los botones de cerrar (X)
     const closeButtons = document.querySelectorAll('.close');
@@ -207,8 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('click', function(event) {
         const modalPago = document.getElementById('modalPago');
         const modalPlan = document.getElementById('modalPlanSelect');
-        const modalVideo = document.getElementById('modalVideo');
-
+        
         if (event.target === modalPago) {
             modalPago.style.display = 'none';
             document.body.style.overflow = 'auto';
@@ -217,14 +225,10 @@ document.addEventListener('DOMContentLoaded', function() {
             modalPlan.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-        if (event.target === modalVideo) {
-            modalVideo.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
     });
 });
 
-// Mejoras para el manejo de diferentes tamaños de pantalla
+// Función para ajustar el layout según el tamaño de pantalla
 function adjustLayoutForScreenSize() {
   const isMobile = window.innerWidth <= 768;
   const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
