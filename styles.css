@@ -74,8 +74,8 @@ main {
 section {
     background-color: rgba(0, 255, 255, 0.05);
     border-radius: 20px;
-    padding: 4rem 2rem;
-    margin: 4rem 0;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
     border: 2px solid rgba(0, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
 }
@@ -281,8 +281,8 @@ h1, h2, h3 {
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 2rem 0;
+    gap: 1.5rem;
+    padding: 1rem 0;
 }
 
 .feature {
@@ -291,7 +291,7 @@ h1, h2, h3 {
         rgba(0, 255, 255, 0.1) 100%);
     border: 2px solid rgba(0, 255, 255, 0.1);
     border-radius: 24px;
-    padding: 2rem;
+    padding: 1.5rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -372,22 +372,19 @@ h1, h2, h3 {
 .plan-container {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    padding: 3rem 0;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
     align-items: flex-start;
 }
 
 .plan {
-    width: 320px;
-    min-height: 480px;
-    padding: 1.8rem;
-    background: linear-gradient(145deg, rgba(0, 255, 255, 0.05) 0%, rgba(0, 255, 255, 0.1) 100%);
-    border: 1px solid rgba(0, 255, 255, 0.2);
+    background: linear-gradient(145deg, 
+        rgba(0, 255, 255, 0.05) 0%, 
+        rgba(0, 255, 255, 0.1) 100%);
+    border: 2px solid rgba(0, 255, 255, 0.1);
     border-radius: 24px;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+    padding: 1.5rem;
+    transition: all 0.4s ease;
 }
 
 .plan:hover {
@@ -397,12 +394,11 @@ h1, h2, h3 {
 }
 
 .plan.featured {
-    width: 360px;
-    min-height: 520px;
-    padding: 2rem;
-    background: linear-gradient(145deg, rgba(0, 255, 255, 0.1) 0%, rgba(0, 255, 255, 0.2) 100%);
-    border: 2px solid var(--primary-color);
+    background: linear-gradient(145deg, 
+        rgba(0, 255, 255, 0.1) 0%, 
+        rgba(0, 255, 255, 0.2) 100%);
     transform: scale(1.05);
+    border-color: var(--primary-color);
 }
 
 .plan-badge {
@@ -470,20 +466,18 @@ h1, h2, h3 {
 }
 
 .plan-features li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    font-size: 0.95rem;
-    color: var(--text-color);
+    gap: 0.8rem;
 }
 
-.plan-features i {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    background: rgba(0, 255, 255, 0.1);
-    padding: 0.5rem;
-    border-radius: 50%;
+.plan-features i.fa-check-circle {
+    color: #00ff00;
+}
+
+.plan-features i.fa-times-circle {
+    color: #ff4444;
 }
 
 .plan-button {
@@ -2911,6 +2905,145 @@ footer {
 .lock-icon {
     margin-left: 5px;
     font-size: 0.9em;
+}
+
+/* Estilos mejorados para títulos de secciones */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    display: inline-block;
+    padding: 0 2rem;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 255, 255, 0.1), 
+        transparent);
+}
+
+.section-title::before,
+.section-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 2px;
+    background: var(--primary-color);
+    transform: translateY(-50%);
+}
+
+.section-title::before {
+    left: -20px;
+}
+
+.section-title::after {
+    right: -20px;
+}
+
+section {
+    text-align: center;
+    padding: 2rem;
+    margin: 1rem 0;
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+}
+
+/* Efecto de brillo mejorado */
+.section-title {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+        padding: 0 1.5rem;
+    }
+
+    .section-title::before,
+    .section-title::after {
+        width: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        padding: 0 1rem;
+    }
+
+    .section-title::before,
+    .section-title::after {
+        width: 15px;
+    }
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto 2rem; /* Reducido de 4rem */
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .section-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .feature-grid {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .feature-grid {
+        gap: 0.8rem;
+    }
 }
 
 

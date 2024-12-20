@@ -3,518 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jarvis IA - Tecnología HRZ</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sitio en Mantenimiento - Tecnología HRZ</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0a192f, #112240);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e6f1ff;
+        }
+
+        .maintenance-container {
+            text-align: center;
+            padding: 3rem;
+            max-width: 700px;
+            background: rgba(17, 34, 64, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(230, 241, 255, 0.1);
+        }
+
+        .icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            color: #64ffda;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #64ffda;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #8892b0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 3px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 30%;
+            height: 100%;
+            background: #64ffda;
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
+        }
+
+        @media (max-width: 768px) {
+            .maintenance-container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header><!-- listo-->
-        <nav>
-            <div class="logo">Tecnología HRZ</div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#caracteristicas">Características</a></li>
-                <li><a href="#planes">Planes</a></li>
-                <li><a href="#creador">Creador</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="inicio">
-            <div class="hero">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>JARVIS IA</h1>
-                        <p class="hero-subtitle">Tu asistente personal del futuro, hoy.</p>
-                        <div class="hero-features">
-                            <div class="hero-feature">
-                                <i class="fas fa-brain"></i>
-                                <span>IA Avanzada</span>
-                            </div>
-                            <div class="hero-feature">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Seguridad Personalizada</span>
-                            </div>
-                            <div class="hero-feature">
-                                <i class="fas fa-bolt"></i>
-                                <span>Respuesta Instantánea</span>
-                            </div>
-                        </div>
-                        <div class="hero-buttons">
-                            <button class="cta-button primary" onclick="window.location.href='#beta'">Probar la beta</button>
-                            <button class="cta-button secondary" onclick="window.location.href='https://youtu.be/EjllzrkR5TM?si=xkIe2V7F80kmGOfw'">Ver demostración</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-background">
-                    <div class="overlay"></div>
-                    <img src="IMG/img-2.jpg" alt="Interfaz de Jarvis IA">
-                </div>
-            </div>
-        </section>
-
-        <section id="videos">
-            <h2 class="section-title">Demostraciones de Jarvis IA</h2>
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="IMG/img-2.jpg" alt="Introducción a Jarvis IA">
-                    </div>
-                    <div class="video-info">
-                        <h3>Introducción a Jarvis IA</h3>
-                        <p>Descubre las características básicas y el potencial de tu nuevo asistente virtual.</p>
-                        <button class="watch-button" onclick="abrirModal('ebC86X_nFJ0')">Ver Video</button>
-                    </div>
-                </div>
-
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="IMG/img-2.jpg" alt="Funciones Avanzadas">
-                    </div>
-                    <div class="video-info">
-                        <h3>Funciones Avanzadas</h3>
-                        <p>Explora las capacidades avanzadas y la integración con diferentes aplicaciones.</p>
-                        <button class="watch-button" onclick="abrirModal('R_ZQIJfH4F4')">Ver Video</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="beta">
-            <h2 class="section-title">VERSIONES BETA</h2>
-            <p class="section-description">Descarga la versión que mejor se adapte a tus necesidades</p>
-            <p class="beta-dates">Disponible a partir del 25 de diciembre de 2024</p>
-            
-            <div class="beta-versions">
-                <!-- Versión Masculina -->
-                <div class="beta-version-card">
-                    <div class="version-icon">
-                        <i class="fas fa-male"></i>
-                    </div>
-                    <div class="version-info">
-                        <h3>Jarvis</h3>
-                        <div class="subtitle">Personalidad Masculina</div>
-                    </div>
-                    <div class="download-options">
-                        <a href="#" class="download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-windows"></i>
-                            <span>Windows</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                        <a href="#" class="download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-apple"></i>
-                            <span>MacOS</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Versión Femenina -->
-                <div class="beta-version-card">
-                    <div class="version-icon">
-                        <i class="fas fa-female"></i>
-                    </div>
-                    <div class="version-info">
-                        <h3>JARVIS</h3>
-                        <div class="subtitle">Personalidad Femenina</div>
-                    </div>
-                    <div class="download-options">
-                        <a href="#" class="download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-windows"></i>
-                            <span>Windows</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                        <a href="#" class="download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-apple"></i>
-                            <span>MacOS</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Versión Lite -->
-                <div class="beta-version-card">
-                    <div class="version-icon">
-                        <i class="fas fa-feather"></i>
-                    </div>
-                    <div class="version-info">
-                        <h3>JARVIS Lite</h3>
-                        <div class="subtitle">Versión Básica</div>
-                    </div>
-                    <div class="download-options">
-                        <a href="#" class="download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-windows"></i>
-                            <span>Windows</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                        <a href="#" class="download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-apple"></i>
-                            <span>MacOS</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                        <a href="#" class="download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-linux"></i>
-                            <span>Linux</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Versión Móvil -->
-                <div class="beta-version-card mobile">
-                    <div class="version-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="version-info">
-                        <h3>JARVIS Mobile</h3>
-                        <div class="subtitle">App Móvil</div>
-                    </div>
-                    <div class="mobile-download-options">
-                        <a href="#" class="mobile-download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-google-play"></i>
-                            <span>Android</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                        <a href="#" class="mobile-download-button disabled" title="Disponible el 25 de diciembre">
-                            <i class="fab fa-app-store-ios"></i>
-                            <span>iOS</span>
-                            <i class="fas fa-lock lock-icon"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="lanzamiento" class="launch-section">
-            <div class="confetti-container"></div>
-            <h2 class="section-title">Próximo Lanzamiento</h2>
-            <div class="launch-info">
-                <div class="launch-badge">
-                    <p class="launch-date">7 de Abril, 2024</p>
-                </div>
-                <p class="launch-tagline">¡Prepárate para la revolución de la IA personal!</p>
-                <div id="countdown" class="countdown-modern">
-                    <div class="countdown-item">        
-                        <span id="days" class="countdown-value"></span>
-                        <div class="countdown-label">Días</div>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="hours" class="countdown-value"></span>
-                        <div class="countdown-label">Horas</div>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="minutes" class="countdown-value"></span>
-                        <div class="countdown-label">Minutos</div>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="seconds" class="countdown-value"></span>
-                        <div class="countdown-label">Segundos</div>
-                    </div>
-                </div>
-                <button class="cta-button pulse-effect" onclick="mostrarOpcionesPlan()">Reserva tu Jarvis</button>
-            </div>
-        </section>
-
-        <section id="caracteristicas">
-            <h2 class="section-title">Características de Jarvis IA</h2>
-            <div class="feature-grid">
-                <div class="feature">
-                    <div class="feature-image">
-                        <img src="IMG/voz_chat.png" alt="Chat y voz">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Comunicación avanzada</h3>
-                        <p>Interactúa naturalmente mediante chat y comandos de voz. Sistema de reconocimiento de voz de última generación con soporte para múltiples idiomas.</p>
-                    </div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-image">
-                        <img src="IMG/documentos.png" alt="Creación de documentos">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Creación de documentos</h3>
-                        <p>Genera y edita documentos profesionales en múltiples formatos. Compatibilidad total con Word, Excel, PDF y más. Incluye plantillas prediseñadas.</p>
-                    </div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-image">
-                        <img src="IMG/seguridad.jpeg" alt="Seguridad">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Seguridad personalizada</h3>
-                        <p>Sistema de seguridad multicapa con encriptación de última generación. Elige entre autenticación biométrica, PIN o contraseña según tus preferencias.</p>
-                    </div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-image">
-                        <img src="IMG/apps.jpeg" alt="Control de aplicaciones">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Control de aplicaciones</h3>
-                        <p>Gestiona todas tus aplicaciones con comandos simples. Integración perfecta con las principales plataformas y navegadores web.</p>
-                    </div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-image">
-                        <img src="IMG/fecha_hora.png" alt="Recordatorios">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Gestión de tiempo</h3>
-                        <p>Sistema inteligente de recordatorios y calendario. Sincronización automática con tus eventos y optimización de horarios basada en IA.</p>
-                    </div>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-image">
-                        <img src="IMG/memory.png" alt="Memoria a largo plazo">
-                    </div>
-                    <div class="feature-content">
-                        <h3>Memoria a largo plazo</h3>
-                        <p>Sistema avanzado de aprendizaje que retiene tus preferencias y patrones de uso. Mejora continua basada en tus interacciones diarias.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="planes">
-            <h2 class="section-title">Planes Disponibles</h2>
-            <div class="plan-container">
-                <!-- Plan Gratuito (Jarvis Lite) -->
-                <div class="plan lite">
-                    <div class="plan-header">
-                        <h3>Jarvis Lite</h3>
-                        <p class="price">Gratis</p>
-                        <p class="billing-period">Para siempre</p>
-                    </div>
-                    <div class="plan-features">
-                        <ul>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Chat básico con IA</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Reconocimiento de voz básico</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Hasta 7000 consultas/mes</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Soporte comunitario</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button onclick="abrirModalPago('lite')" class="plan-button lite disabled" disabled>
-                        Disponible el 7 de abril 2025
-                    </button>
-                </div>
-
-                <div class="plan">
-                    <div class="plan-header">
-                        <h3>Plan Mensual</h3>
-                        <p class="price">$5 USD</p>
-                        <p class="billing-period">Facturación mensual</p>
-                    </div>
-                    <div class="plan-features">
-                        <ul>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Acceso completo a Jarvis IA</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Soporte 24/7</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Actualizaciones mensuales</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Hasta 10.000 consultas/mes</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Integración con 25 aplicaciones</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button onclick="abrirModalPago('mensual')" class="plan-button disabled" disabled>
-                        Disponible el 7 de abril 2025
-                    </button>
-                </div>
-
-                <div class="plan featured">
-                    <div class="plan-badge">Más Popular</div>
-                    <div class="plan-header">
-                        <h3>Plan Anual</h3>
-                        <p class="price">$45 USD</p>
-                        <p class="savings">¡Ahorra $15!</p>
-                        <p class="billing-period">Facturación anual</p>
-                    </div>
-                    <div class="plan-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> Todo lo del plan mensual</li>
-                            <li><i class="fas fa-check"></i> 2 meses gratis</li>
-                            <li><i class="fas fa-check"></i> Consultas ilimitadas</li>
-                            <li><i class="fas fa-check"></i> Integración con apps ilimitadas</li>
-                            <li><i class="fas fa-check"></i> Acceso prioritario a nuevas funciones</li>
-                            <li><i class="fas fa-check"></i> Soporte prioritario</li>
-                            <li><i class="fas fa-check"></i> Personalización avanzada</li>
-                        </ul>
-                    </div>
-                    <button onclick="abrirModalPago('anual')" class="plan-button featured disabled" disabled>
-                        Disponible el 7 de abril 2025
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="creador">
-            <h2 class="section-title">Sobre el Creador</h2>
-            <div class="creator-info">
-                <div class="creator-image-container">
-                    <img src="IMG/img-1.jpg" alt="Andrés Hincapié Ruíz" class="creator-image">
-                </div>
-                <div class="creator-details">
-                    <h3>Andrés Hincapié Ruíz</h3>
-                    <p>Visionario detrás de Tecnología HRZ y Jarvis IA. Con más de una década de experiencia en inteligencia artificial y desarrollo de software, Andrés ha dedicado su carrera a revolucionar la forma en que interactuamos con la tecnología en nuestra vida diaria.</p>
-                    <p>Su pasión por la innovación y el compromiso con la excelencia tecnológica lo han llevado a crear Jarvis, una IA que combina potencia y simplicidad para mejorar la vida cotidiana de las personas.</p>
-                    <div class="creator-social">
-                        <a href="https://linkedin.com/in/tu-perfil" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/tu-usuario" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://youtube.com/@tu-canal" target="_blank" class="social-link">
-                            <i class="fab fa-youtube"></i>
-                            <span>YouTube</span>
-                        </a>
-                        <a href="https://instagram.com/tu-usuario" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://facebook.com/tu-pagina" target="_blank" class="social-link">
-                            <i class="fab fa-facebook"></i>
-                            <span>Facebook</span>
-                        </a>
-                        <a href="https://twitter.com/tu-usuario" target="_blank" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                            <span>Twitter</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Tecnología HRZ. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="countdown.js"></script>
-
-    <!-- Agregar antes del cierre del body -->
-    <div id="modalPago" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModalPago()">&times;</span>
-            <h2>Selecciona tu método de pago</h2>
-            <p id="plan-seleccionado"></p>
-            <div class="metodos-pago">
-                <a href="https://www.paypal.com" target="_blank" class="metodo-pago">
-                    <img src="IMG/paypal.png" alt="PayPal">
-                    <span>PayPal</span>
-                </a>
-                <a href="https://daviplata.com" target="_blank" class="metodo-pago">
-                    <img src="IMG/daviplata.png" alt="Daviplata">
-                    <span>Daviplata</span>
-                </a>
-                <a href="https://www.bancolombia.com/personas/apps/bancolombia-a-la-mano" target="_blank" class="metodo-pago">
-                    <img src="IMG/bancolombia.png" alt="Bancolombia a la Mano">
-                    <span>Bancolombia a la Mano</span>
-                </a>
-                <a href="https://www.nequi.com.co" target="_blank" class="metodo-pago">
-                    <img src="IMG/nequi.png" alt="Nequi">
-                    <span>Nequi</span>
-                </a>
-                <a href="https://www.nu.com.co" target="_blank" class="metodo-pago">
-                    <img src="IMG/nu.png" alt="Nu">
-                    <span>Nu</span>
-                </a>
-                <a href="https://www.wester-union.com.co" target="_blank" class="metodo-pago">
-                    <img src="IMG/western-union.png" alt="Wester">
-                    <span>Wester Union</span>
-                </a>
-            </div>
+    <div class="maintenance-container">
+        <div class="icon">
+            <i class="fas fa-cog fa-spin"></i>
+        </div>
+        <h1>Sitio en Mantenimiento</h1>
+        <p>Estamos realizando mejoras en Tecnología HRZ para brindarte una experiencia aún mejor. Volveremos pronto con nuevas características y optimizaciones.</p>
+        <p>Gracias por tu paciencia.</p>
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
     </div>
-
-    <!-- Agregar el modal para los videos -->
-    <div id="modalVideo" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModal()">&times;</span>
-            <div class="video-container">
-                <iframe id="videoFrame" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- Agregar nuevo modal para selección de plan -->
-    <div id="modalPlanSelect" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModalPlan()">&times;</span>
-            <h2>Selecciona tu Plan</h2>
-            <div class="plan-selection">
-                <div class="plan-option" onclick="abrirModalPago('mensual')">
-                    <h3>Plan Mensual</h3>
-                    <p class="price">$5 USD</p>
-                    <ul>
-                        <li>Acceso completo a Jarvis IA</li>
-                        <li>Soporte 24/7</li>
-                        <li>Actualizaciones mensuales</li>
-                    </ul>
-                </div>
-                <div class="plan-option featured" onclick="abrirModalPago('anual')">
-                    <h3>Plan Anual</h3>
-                    <p class="price">$45 USD</p>
-                    <p class="savings">¡Ahorra $15!</p>
-                    <ul>
-                        <li>Todo lo del plan mensual</li>
-                        <li>2 meses gratis</li>
-                        <li>Acceso prioritario a nuevas funciones</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function abrirModal(videoId) {
-            document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/' + videoId;
-            document.getElementById('modalVideo').style.display = 'block';
-        }
-
-        function cerrarModal() {
-            document.getElementById('modalVideo').style.display = 'none';
-            document.getElementById('videoFrame').src = '';
-        }
-    </script>
-    
 </body>
 </html>
